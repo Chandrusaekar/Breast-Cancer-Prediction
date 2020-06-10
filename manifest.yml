@@ -1,0 +1,9 @@
+---
+applications:
+- name: Cancer_pred
+ memory: 1024MB
+ disk_quota: 1.7GB
+ random-route: true
+ parameters:
+  memory: 1024MB
+  buildpack: 'python_buidpack'
