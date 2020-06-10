@@ -14,7 +14,7 @@ Created on Wed Jun 10 18:56:37 2020
 from flask import Flask, request, jsonify, render_template
 from flask_cors import CORS, cross_origin
 import pickle
-
+import numpy as np
 # =============================================================================
 # import numpy
 # =============================================================================
