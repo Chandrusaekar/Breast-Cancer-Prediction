@@ -15,12 +15,15 @@ from flask import Flask, request, jsonify, render_template
 from flask_cors import CORS, cross_origin
 import pickle
 import numpy as np
+import logging
 # =============================================================================
 # import numpy
 # =============================================================================
 
 
 app=Flask(__name__)
+
+logging.basicConfig(level=logging.DEBUG)
 
 file_Name = "Cancer.pkl"
 fileObject = open(file_Name,'rb')  
@@ -30,22 +33,32 @@ model = pickle.load(fileObject)
 
 @app.route('/')
 def welcome():
-    return render_template('index1.html')
+    return render_template('index.html')
 
-@app.route('/predict',methods=['POST'])
-
+@app.route('/predict',methods=['POST','GET'])
 def predict():
-       
+    app.logger.info('Processing default request')
+# =============================================================================
+#     print('********Entered*********')
+# =============================================================================
     int_features = [int(x) for x in request.form.values()]
     final_features = [np.array(int_features)]
     prediction = model.predict(final_features)
     output = prediction[0]
+# =============================================================================
+#     print('*******',output,'**********')
+# =============================================================================
+# =============================================================================
+#     print('*******',type(output),'**********')
+# =============================================================================
     if str(output)== '0':
         prediction_text = 'No Cancer'
     else :
         prediction_text = 'Go for Trearment - Cancer =YES'
-    
-    return render_template('index1.html', prediction_text=prediction_text)
+# =============================================================================
+#     print('*******',prediction_text,'**********')
+# =============================================================================
+    return render_template('index.html', prediction_text=prediction_text)
     
 @app.route('/results',methods=['POST'])
 def results():
@@ -58,5 +71,5 @@ def results():
 
 #port = int(os.getenv("PORT"))
 if __name__ == "__main__":
-	app.run()
+	app.run(debug=False)
 
