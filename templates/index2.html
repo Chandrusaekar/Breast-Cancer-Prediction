@@ -1,43 +1,24 @@
-
 <!DOCTYPE html>
 <html >
 <head>
-  
-  <title>Breast Cancer Prediction</title> 
-  <!--
-  
-<link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+  <meta charset="UTF-8">
+  <title>Deployment Tutorial 1</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>  -->
-<link rel="stylesheet" href="css/style.css" type="text/css">  
-<meta charset="UTF-8">  
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
   
-<style>
-.fields {
-  column-count: 3;
-  column-gap: 30px;
-  column-rule-style: None;
-}
-</style>
-
 </head>
 
-<!-- <body style="background: #7fffd4;"> -->
-<img src="medical.jpg"  width="700" height="600" align="right">  
-
-<div class="bg-img">
-    	 
+<body style="background: #000;">
  <div class="login">
-	<h1> <center> Breast Cancer Prediction </center> </h1>
+	<h1>Sales Forecasting</h1>
 
      <!-- Main Input For Receiving Query to our ML -->
-    <form action="/predict"method="post">
-		
-	<div class="fields">
-				  
-		<input type="text" name="mean radius" placeholder="mean radius" required="required" /> </td>
-		<input type="text" name="mean texture" placeholder="mean texture" required="required" />
+    <form action="{{ url_for('predict')}}"method="post">
+    	<input type="text" name="mean radius" placeholder="mean radius" required="required" />
+        <input type="text" name="mean texture" placeholder="mean texture" required="required" />
 		<input type="text" name="mean perimeter" placeholder="mean perimeter" required="required" />
 		<input type="text" name="mean area" placeholder="mean area" required="required" />
         <input type="text" name="mean smoothness" placeholder="mean smoothness" required="required" />
@@ -46,9 +27,7 @@
         <input type="text" name="mean concave points" placeholder="mean concave points" required="required" />
 		<input type="text" name="mean symmetry" placeholder="mean symmetry" required="required" />
 		<input type="text" name="mean fractal dimension" placeholder="mean fractal dimension" required="required" />
-        
-		
-		<input type="text" name="radius error" placeholder="radius error" required="required" />
+        <input type="text" name="radius error" placeholder="radius error" required="required" />
 		<input type="text" name="texture error" placeholder="texture error" required="required" />
 		<input type="text" name="perimeter error" placeholder="perimeter error" required="required" />
 		<input type="text" name="area error" placeholder="area error" required="required" />
@@ -58,7 +37,6 @@
 		<input type="text" name="concave points error" placeholder="concave points error" required="required" />
 		<input type="text" name="symmetry error" placeholder="symmetry error" required="required" />
 		<input type="text" name="fractal dimension error" placeholder="fractal dimension error" required="required" />
-		
 		<input type="text" name="worst radius" placeholder="worst radius" required="required" />
 		<input type="text" name="worst texture" placeholder="worst texture" required="required" />
 		<input type="text" name="worst perimeter" placeholder="worst perimeter" required="required" />
@@ -69,15 +47,18 @@
 		<input type="text" name="worst concave points" placeholder="worst concave points" required="required" />
 		<input type="text" name="worst symmetry" placeholder="worst symmetry" required="required" />
 		<input type="text" name="worst fractal dimension" placeholder="worst fractal dimension" required="required" />
-		
-		</div>
-<br>
 
-        <button type="submit" class="button">
-			<h2> Predict </h2> </button> 
-     </form>
-    </div>
+
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict sales in third month</button>
+    </form>
+
+   <br>
+   <br>
+   <form action="{{ url_for('predict')}}"method="get">
+   {{ prediction_text }}
+	</form>
  </div>
+
 
 </body>
 </html>
