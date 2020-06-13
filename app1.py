@@ -1,11 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Wed Jun 10 20:04:55 2020
-
-@author: VINOTHKUMAR
-"""
-
-# -*- coding: utf-8 -*-
 """
 Created on Wed Jun 10 18:56:37 2020
 
@@ -33,7 +25,7 @@ model = pickle.load(fileObject)
 
 @app.route('/')
 def welcome():
-    return render_template('index.html')
+    return render_template('new_index.html')
 
 @app.route('/predict',methods=['POST','GET'])
 def predict():
@@ -58,7 +50,7 @@ def predict():
 # =============================================================================
 #     print('*******',prediction_text,'**********')
 # =============================================================================
-    return render_template('index.html', prediction_text=prediction_text)
+    return render_template('new_index.html', prediction_text=prediction_text)
     
 @app.route('/results',methods=['POST'])
 def results():
@@ -71,5 +63,5 @@ def results():
 
 #port = int(os.getenv("PORT"))
 if __name__ == "__main__":
-	app.run(debug=False)
+	app.run(debug=False,port=8080)
 

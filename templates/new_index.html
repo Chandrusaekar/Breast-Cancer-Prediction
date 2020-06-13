@@ -4,12 +4,7 @@
 <head>
   
   <title>Breast Cancer Prediction</title> 
-  <!--
   
-<link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>  -->
 <link rel="stylesheet" href="css/style.css" type="text/css">  
 <meta charset="UTF-8">  
   
@@ -20,16 +15,15 @@
   column-rule-style: None;
 }
 </style>
+  
 
 </head>
 
-<!-- <body style="background: #7fffd4;"> -->
-<img src="medical.jpg"  width="700" height="600" align="right">  
+<body style="background: #9678b6;">
 
-<div class="bg-img">
     	 
  <div class="login">
-	<h1> <center> Breast Cancer Prediction </center> </h1>
+	<h1 style="color:#069"> <center>  Breast Cancer Prediction </center> </h1>
 
      <!-- Main Input For Receiving Query to our ML -->
     <form action="/predict"method="post">
@@ -76,8 +70,12 @@
         <button type="submit" class="button">
 			<h2> Predict </h2> </button> 
      </form>
+	 
+	  <br>
+   <br>
+   {{ prediction_text }}
+	 
     </div>
  </div>
-
-</body>
+ </body>
 </html>
